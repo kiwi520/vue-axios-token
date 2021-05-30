@@ -1,8 +1,6 @@
 <template>
   <div>
-    <a-button  type="primary" style="margin: 10px"  @click="ToLogin">登陆</a-button>
-    <a-button  type="primary" style="margin: 10px">刷新token</a-button>
-    <a-button type="primary" style="margin: 10px">退出</a-button>
+    <h1>Home Page</h1>
   </div>
 </template>
 

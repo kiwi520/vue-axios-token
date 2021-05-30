@@ -1,6 +1,19 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <a-menu mode="horizontal">
+      <a-menu-item key="home">
+        <router-link to="/">首页</router-link>
+      </a-menu-item>
+      <a-menu-item key="login">
+        <router-link to="/login">登录</router-link>
+      </a-menu-item>
+
+    </a-menu>
+
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 
