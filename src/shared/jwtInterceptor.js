@@ -36,9 +36,9 @@ jwtInterceptor.interceptors.response.use(
                     ] = `bearer ${response.data.access_token}`;
                 return axios(error.config);
             }).catch(function (error) {
-                    console.log(error);
-                localStorage.setItem("access_token", "");
-                localStorage.setItem("refresh_token", "");
+                // console.log(error);
+                localStorage.removeItem("access_token");
+                localStorage.removeItem("refresh_token");
                 window.location.href ="http://localhost:8081/login"
                 });
         } else {

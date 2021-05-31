@@ -4,8 +4,11 @@
       <a-menu-item key="home">
         <router-link to="/">首页</router-link>
       </a-menu-item>
-      <a-menu-item key="login">
+      <a-menu-item key="login" v-show="gettersLoginStatus.length <= 0 ">
         <router-link to="/login">登录</router-link>
+      </a-menu-item>
+      <a-menu-item key="logout" v-show="gettersLoginStatus.length > 0 ">
+        <a-button @click="logout">推出</a-button>
       </a-menu-item>
 
     </a-menu>
@@ -19,8 +22,24 @@
 
 <script>
 
+import {mapActions, mapGetters} from "vuex";
+
 export default {
   name: 'App',
+  computed: {
+    ...mapGetters({
+      gettersLoginStatus: 'getLoginStatus',
+    })
+  },
+  methods:{
+    ...mapActions({
+      actionsLogout:"logout"
+    }),
+    async logout(){
+      await this.actionsLogout();
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
 
